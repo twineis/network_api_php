@@ -266,11 +266,11 @@ class Client {
    *
    * @return array        stdClass objects or associative arrays, based on $assoc
    */
-  public function getCollectionProjects( $id, $assoc = false ) {
+  public function getCollectionProjects( $id, $params = array(), $assoc = false ) {
 
     $endpoint = self::ENDPOINT_COLLECTIONS . '/' . $id . '/projects';
 
-    $results  = $this->_getDecodedJson( $endpoint, array(), 'projects', $assoc );
+    $results  = $this->_getDecodedJson( $endpoint, $params, 'projects', $assoc );
 
     // IMPORTANT: Ensure this will always return an array
     return ( empty( $results ) )
@@ -287,11 +287,11 @@ class Client {
    *
    * @return array                      stdClass objects or associative arrays, based on $assoc
    */
-  public function getUserCollections( $id_or_username, $assoc = false ) {
+  public function getUserCollections( $id_or_username, $params = array(), $assoc = false ) {
 
     $endpoint = self::ENDPOINT_USERS . "/{$id_or_username}/collections";
 
-    $results  = $this->_getDecodedJson( $endpoint, array(), 'collections', $assoc );
+    $results  = $this->_getDecodedJson( $endpoint, $params, 'collections', $assoc );
 
     // IMPORTANT: Ensure this will always return an array
     return ( empty( $results ) )
